@@ -1,0 +1,126 @@
+<section class="section" id="process">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-6 text-center">
+        <div class="section-heading">
+          <!-- Heading -->
+          <h2 class="section-title">Create Your Own Project</h2>
+        </div>
+      </div>
+    </div>
+    <div class="justify-content-center">
+      <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+        <li [ngbNavItem]="1">
+          <a ngbNavLink>Step #01</a>
+          <ng-template ngbNavContent>
+            <div class="row justify-content-md-center">
+              <form class="form-inline">
+                <div class="form-group">
+                  <label>Add Your Project Name</label>
+                  <input
+                    type="text"
+                    placeholder="Enter Project Name"
+                    class="form-control mx-sm-3"
+                    aria-describedby="passwordHelpInline"
+                  />
+                  <button
+                    type="submit"
+                    class="btn-new btn-primary"
+                    [disabled]="active === 2"
+                    (click)="nav.select(2)"
+                  >
+                    Submit
+                  </button>
+                </div>
+              </form>
+            </div>
+          </ng-template>
+        </li>
+        <li [ngbNavItem]="2">
+          <a ngbNavLink>Step #02</a>
+          <ng-template ngbNavContent>
+            <div class="row">
+              <div class="col-4">
+                <img
+                  src="../../../assets/images/points.png"
+                  alt=""
+                  class="img-fluid"
+                />
+              </div>
+              <div class="col-8">
+                <form [formGroup]="formGroup" (validSubmit)="onSubmit()">
+                  <div class="form-group">
+                    <label
+                      >Shoulder x coordinate/rotation in angles (joint number
+                      5)</label
+                    >
+                    <textarea
+                      class="form-control"
+                      rows="3"
+                      placeholder="Enter shoulder x coordinate/rotation in angles"
+                      formControlName="Collar_bone_x"
+                    ></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label>Shoulder y coordinate/rotation</label>
+                    <textarea
+                      class="form-control"
+                      rows="3"
+                      placeholder="Enter shoulder y coordinate/rotation"
+                      formControlName="Collar_bone_y"
+                    ></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label>Shoulder z coordinate/rotation</label>
+                    <textarea
+                      class="form-control"
+                      rows="3"
+                      placeholder="Enter shoulder z coordinate/rotation"
+                      formControlName="Collar_bone_z"
+                    ></textarea>
+                  </div>
+
+                  <button *ngIf="!Output" type="submit" class="btn btn-primary">
+                    Save
+                  </button>
+                  <div *ngIf="Output">
+                    <button
+                      type="submit"
+                      class="btn btn-dark"
+                      [disabled]="active === 3"
+                      (click)="nav.select(3)"
+                    >
+                      Go to Your Final Outcome
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </ng-template>
+        </li>
+        <li [ngbNavItem]="3">
+          <a ngbNavLink>Final Result</a>
+          <ng-template ngbNavContent>
+            <div class="row justify-content-md-center">
+              <h4>Predict Result</h4>
+            </div>
+            <div class="row justify-content-md-center">
+              <div *ngIf="Output == 0">
+                <h2 class="badge badge-warning" style="font-size: 24px">
+                  Circular Fidgety Movements
+                </h2>
+              </div>
+              <div *ngIf="Output == 1">
+                <h2 class="badge badge-warning" style="font-size: 24px">
+                  Straight Fidgety Movements
+                </h2>
+              </div>
+            </div>
+          </ng-template>
+        </li>
+      </ul>
+
+      <div [ngbNavOutlet]="nav" class="mt-5"></div>
+    </div>
+  </div>
+</section>
