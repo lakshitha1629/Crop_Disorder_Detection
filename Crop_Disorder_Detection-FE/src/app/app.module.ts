@@ -18,7 +18,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgBootstrapFormValidationModule } from 'ng-bootstrap-form-validation';
 import { HttpClientModule } from '@angular/common/http';
 import { DetectDisorderComponent } from './features/detect-disorder/detect-disorder.component';
-import { OntologyComponent } from './features/ontology/ontology.component';
+import { ImageUploaderModule } from 'ngx-image-uploader-next';
+import { NgOpenCVModule, OpenCVOptions } from "ng-open-cv";
+
+const openCVConfig: OpenCVOptions = {
+  scriptUrl: `assets/opencv/opencv.js`,
+  wasmBinaryFile: 'wasm/opencv_js.wasm',
+  usingWasm: true
+};
 
 @NgModule({
   declarations: [
@@ -29,8 +36,7 @@ import { OntologyComponent } from './features/ontology/ontology.component';
     AboutComponent,
     TopBarComponent,
     BannerComponent,
-    DetectDisorderComponent,
-    OntologyComponent
+    DetectDisorderComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +48,10 @@ import { OntologyComponent } from './features/ontology/ontology.component';
     FormsModule,
     ReactiveFormsModule,
     NgBootstrapFormValidationModule.forRoot(),
+    NgOpenCVModule.forRoot(openCVConfig),
+    ImageUploaderModule
   ],
+  exports: [BrowserModule, NgOpenCVModule],
   providers: [{ provide: NG_ENTITY_SERVICE_CONFIG, useValue: { baseUrl: environment.apiUrl } }],
   bootstrap: [AppComponent]
 })
