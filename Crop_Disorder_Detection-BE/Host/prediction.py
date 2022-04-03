@@ -1,20 +1,20 @@
 import pickle
-import pandas as pd
+import json
 
 def predict_mpg(config):
     ##loading the model from the saved file
-    pkl_filename = "model.bin"
+    pkl_filename = "model.pkl"
     with open(pkl_filename, 'rb') as f_in:
         model = pickle.load(f_in)
     
-    if (type(config) == dict):
+    if (config):
         df = pd.DataFrame(config)
+        
     else:
         df = config
-
+    
     y_pred = model.predict(df)
     y_pred_int = int(y_pred[0])
-
     return y_pred_int
 
 
@@ -29,23 +29,22 @@ def predict_Output(y):
         
         for a in range(0, len(my_list)):
             config = {
-                'Collar_bone_x': [float(my_list[a])],
-                'Collar_bone_y': [float(my_list[a])],
-                'Collar_bone_z': [float(my_list[a])],
-                'Fore_arm_x': [float(my_list[a])],
-                'Fore_arm_y': [float(my_list[a])],
-                'Fore_arm_z': [float(my_list[a])],
-                'Hand_x_test': [float(my_list[a])],
-                'Hand_y_test': [float(my_list[a])],
-                'Hand_z_test': [float(my_list[a])],
-                'Upper_arm_x': [float(my_list[a])],
-                'Upper_arm_y': [float(my_list[a])],
-                'Upper_arm_z': [float(my_list[a])]
+                'Collar_bone_x': [my_list[a]],
+                'Collar_bone_y': [my_list[a]],
+                'Collar_bone_z': [my_list[a]],
+                'Fore_arm_x': [my_list[a]],
+                'Fore_arm_y': [my_list[a]],
+                'Fore_arm_z': [my_list[a]],
+                'Hand_x_test': [my_list[a]],
+                'Hand_y_test': [my_list[a]],
+                'Hand_z_test': [my_list[a]],
+                'Upper_arm_x': [my_list[a]],
+                'Upper_arm_y': [my_list[a]],
+                'Upper_arm_z': [my_list[a]]
                 }
-                
         predictResult = predict_mpg(config)
         result.append(predictResult)
-        # print(config)
+    #     print(config)
 
     most_common_value = max(result, key = result.count)
     # print(most_common_value,"MaxCoutOutput")

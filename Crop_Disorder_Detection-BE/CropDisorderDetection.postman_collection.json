@@ -1,0 +1,59 @@
+{
+	"info": {
+		"_postman_id": "7bf00bb8-7f16-483d-8fa3-fbdbb19940e6",
+		"name": "CropDisorderDetection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CheckAPI",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://crop-disorder-detection-be.herokuapp.com/",
+					"protocol": "https",
+					"host": [
+						"crop-disorder-detection-be",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ImageProcessing",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/D:/Other Project/Crop_Disorder_Detection/OpenCv Part/img/0.PNG"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://crop-disorder-detection-be.herokuapp.com/getDetectionOutput",
+					"protocol": "https",
+					"host": [
+						"crop-disorder-detection-be",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"getDetectionOutput"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
