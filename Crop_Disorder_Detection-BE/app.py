@@ -58,8 +58,23 @@ class GetDetectionOutput(Resource):
         except Exception as error:
             return {'error': error}
 
+class GetPrediction(Resource):
+    def get(self):
+        return {"error":"Invalid Method."}
+
+    def post(self):
+        try:
+            data = request.get_json()
+            predict = prediction.predict_mpg(data)
+            return {'predict':predict}
+
+        except Exception as error:
+            return {'error': error}
+
+
 api.add_resource(Test,'/')
 api.add_resource(GetDetectionOutput,'/getDetectionOutput')
+api.add_resource(GetPrediction,'/getPrediction')
 
 if __name__ == '__main__':
     app.run(debug=True)
