@@ -4,7 +4,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ProjectDataService } from 'src/app/core/service/project-data.service';
 import { NgOpenCVService, OpenCVLoadResult } from 'ng-open-cv';
 import { fromEvent, Observable } from 'rxjs';
-import { switchMap, tap } from 'rxjs/operators';
+import { switchMap, tap, toArray } from 'rxjs/operators';
 import { Uploader } from 'src/app/core/state/uploader/uploader.model';
 import { UploaderDataService } from 'src/app/core/state/uploader/uploader-data.service';
 import { UploaderService } from 'src/app/core/state/uploader/uploader.service';
@@ -36,9 +36,26 @@ export class DetectDisorderComponent implements OnInit {
   canvas: ElementRef;
 
   formGroup: FormGroup = new FormGroup({
-    question_1: new FormControl('', [Validators.required]),
-    question_2: new FormControl('', [Validators.required]),
-    question_3: new FormControl('', [Validators.required])
+    Q1: new FormControl(''),
+    Q2: new FormControl(''),
+    Q3: new FormControl(''),
+    Q4: new FormControl(''),
+    Q5: new FormControl(''),
+    Q6: new FormControl(''),
+    Q7: new FormControl(''),
+    Q8: new FormControl(''),
+    Q9: new FormControl(''),
+    Q10: new FormControl(''),
+    Q11: new FormControl(''),
+    Q12: new FormControl(''),
+    Q13: new FormControl(''),
+    Q14: new FormControl(''),
+    Q15: new FormControl(''),
+    Q16: new FormControl(''),
+    Q17: new FormControl(''),
+    Q18: new FormControl(''),
+    Q19: new FormControl(''),
+    Q20: new FormControl('')
   });
 
   constructor(private projectDataService: ProjectDataService,
@@ -136,14 +153,29 @@ export class DetectDisorderComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.formGroup.value);
     const data =
     {
-      question_1: this.formGroup.controls.question_1.value,
-      question_2: this.formGroup.controls.question_2.value,
-      question_3: this.formGroup.controls.question_3.value
+      Q1: [(this.formGroup.controls.Q1.value==true) ? 1 : 0],
+      Q2: [(this.formGroup.controls.Q2.value==true) ? 1 : 0],
+      Q3: [(this.formGroup.controls.Q3.value==true) ? 1 : 0],
+      Q4: [(this.formGroup.controls.Q4.value==true) ? 1 : 0],
+      Q5: [(this.formGroup.controls.Q5.value==true) ? 1 : 0],
+      Q6: [(this.formGroup.controls.Q6.value==true) ? 1 : 0],
+      Q7: [(this.formGroup.controls.Q7.value==true) ? 1 : 0],
+      Q8: [(this.formGroup.controls.Q8.value==true) ? 1 : 0],
+      Q9: [(this.formGroup.controls.Q9.value==true) ? 1 : 0],
+      Q10: [(this.formGroup.controls.Q10.value==true) ? 1 : 0],
+      Q11: [(this.formGroup.controls.Q11.value==true) ? 1 : 0],
+      Q12: [(this.formGroup.controls.Q12.value==true) ? 1 : 0],
+      Q13: [(this.formGroup.controls.Q13.value==true) ? 1 : 0],
+      Q14: [(this.formGroup.controls.Q14.value==true) ? 1 : 0],
+      Q15: [(this.formGroup.controls.Q15.value==true) ? 1 : 0],
+      Q16: [(this.formGroup.controls.Q16.value==true) ? 1 : 0],
+      Q17: [(this.formGroup.controls.Q17.value==true) ? 1 : 0],
+      Q18: [(this.formGroup.controls.Q18.value==true) ? 1 : 0],
+      Q19: [(this.formGroup.controls.Q19.value==true) ? 1 : 0],
+      Q20: [(this.formGroup.controls.Q20.value==true) ? 1 : 0]
     }
-
 
     if (this.formGroup.valid == true) {
       this.projectDataService.getPrediction(data).subscribe(res => {
