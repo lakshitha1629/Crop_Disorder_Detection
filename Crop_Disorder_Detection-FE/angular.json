@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "movementAssessment": {
+    "cropDisorderDetection": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/movementAssessment",
+            "outputPath": "dist/cropDisorderDetection",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -72,18 +72,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "movementAssessment:build"
+            "browserTarget": "cropDisorderDetection:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "movementAssessment:build:production"
+              "browserTarget": "cropDisorderDetection:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "movementAssessment:build"
+            "browserTarget": "cropDisorderDetection:build"
           }
         },
         "test": {
@@ -123,11 +123,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "movementAssessment:serve"
+            "devServerTarget": "cropDisorderDetection:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "movementAssessment:serve:production"
+              "devServerTarget": "cropDisorderDetection:serve:production"
             }
           }
         }
