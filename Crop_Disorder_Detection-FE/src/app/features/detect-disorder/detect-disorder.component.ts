@@ -9,6 +9,7 @@ import { Uploader } from 'src/app/core/state/uploader/uploader.model';
 import { UploaderDataService } from 'src/app/core/state/uploader/uploader-data.service';
 import { UploaderService } from 'src/app/core/state/uploader/uploader.service';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-detect-disorder',
@@ -62,7 +63,8 @@ export class DetectDisorderComponent implements OnInit {
     private ngOpenCVService: NgOpenCVService,
     private uploadService: UploaderDataService,
     private uploaderService: UploaderService,
-    private router:Router) { }
+    private router:Router,
+    private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
     this.openCVLoadResult = this.ngOpenCVService.isReady$;
@@ -116,6 +118,7 @@ export class DetectDisorderComponent implements OnInit {
 
   upload(idx, file) {
     this.progressInfos[idx] = { value: 0, fileName: file.name };
+    this.spinner.show();
     this.uploadService.upload(file).subscribe(
       (res: HttpEvent<any>) => {
 
@@ -130,6 +133,7 @@ export class DetectDisorderComponent implements OnInit {
           this.yellowDotsCount = res.body.yellowDotsCount;
           this.active = 1;
           this.imageUploadBoolean = 1;
+          this.spinner.hide();
           this.uploaderService.addUploaderItem({
             id: 1,
             diseasePercentage: this.diseasePercentage,
@@ -178,7 +182,9 @@ export class DetectDisorderComponent implements OnInit {
     }
 
     if (this.formGroup.valid == true) {
+      this.spinner.show();
       this.projectDataService.getPrediction(data).subscribe(res => {
+        this.spinner.hide();
         console.log(res);
         this.Output = res.predict;
         console.log('Succefully Added');

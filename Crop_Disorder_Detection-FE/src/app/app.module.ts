@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -20,6 +20,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { DetectDisorderComponent } from './features/detect-disorder/detect-disorder.component';
 import { ImageUploaderModule } from 'ngx-image-uploader-next';
 import { NgOpenCVModule, OpenCVOptions } from "ng-open-cv";
+
+import { NgxSpinnerModule } from "ngx-spinner";
 
 const openCVConfig: OpenCVOptions = {
   scriptUrl: `assets/opencv/opencv.js`,
@@ -49,7 +51,9 @@ const openCVConfig: OpenCVOptions = {
     ReactiveFormsModule,
     NgBootstrapFormValidationModule.forRoot(),
     NgOpenCVModule.forRoot(openCVConfig),
-    ImageUploaderModule
+    ImageUploaderModule,
+    BrowserAnimationsModule,
+    NgxSpinnerModule
   ],
   exports: [BrowserModule, NgOpenCVModule],
   providers: [{ provide: NG_ENTITY_SERVICE_CONFIG, useValue: { baseUrl: environment.apiUrl } }],

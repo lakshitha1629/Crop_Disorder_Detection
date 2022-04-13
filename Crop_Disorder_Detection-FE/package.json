@@ -40,7 +40,7 @@
     "ngx-image-uploader-next": "^1.0.4",
     "ngx-paypal": "^7.0.0",
     "ngx-slick-carousel": "^0.5.1",
-    "ngx-spinner": "^11.0.1",
+    "ngx-spinner": "^10.0.1",
     "ngx-toastr": "^14.0.0",
     "rxjs": "~6.6.0",
     "slick-carousel": "^1.8.1",

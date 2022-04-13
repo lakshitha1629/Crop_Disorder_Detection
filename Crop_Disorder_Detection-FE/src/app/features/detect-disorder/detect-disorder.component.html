@@ -15,7 +15,7 @@
       </button>
       <hr>
       <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
-        <li [ngbNavItem]="1">
+        <li [ngbNavItem]="1" [disabled]="active === 2 || active === 3">
           <a ngbNavLink>Step #01</a>
           <ng-template ngbNavContent>
             <div class="row">
@@ -130,7 +130,7 @@
             </div>
           </ng-template>
         </li>
-        <li [ngbNavItem]="2">
+        <li [ngbNavItem]="2" [disabled]="active === 1 || active === 3">
           <a ngbNavLink>Step #02</a>
           <ng-template ngbNavContent>
             <div class="row">
@@ -300,7 +300,7 @@
             </div>
           </ng-template>
         </li>
-        <li [ngbNavItem]="3">
+        <li [ngbNavItem]="3" [disabled]="active === 1 || active === 2">
           <a ngbNavLink>Final Result</a>
           <ng-template ngbNavContent>
             <div class="row justify-content-md-center">
