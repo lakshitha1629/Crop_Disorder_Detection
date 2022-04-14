@@ -64,12 +64,13 @@ class GetPredictionOutput(Resource):
     def post(self):
         try:
             data = request.get_json()
+            # print(data)
             predict = prediction.predict_mpg(data)
-            return {'predict':predict}
+            predictOutput = predict[0]
+            return {'predict':predictOutput}
 
         except Exception as error:
             return {'error': error}
-
 
 api.add_resource(Test,'/')
 api.add_resource(GetDetectionOutput,'/getDetectionOutput')

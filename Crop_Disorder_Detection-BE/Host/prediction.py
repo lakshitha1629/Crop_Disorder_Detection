@@ -1,5 +1,6 @@
 import pickle
 import pandas as pd
+import json
 
 def predict_mpg(config):
     ##loading the model from the saved file
@@ -8,7 +9,7 @@ def predict_mpg(config):
         model = pickle.load(f_in)
 
     if type(config) == dict:
-        df = pd.DataFrame(my_pickled_object)
+        df = pd.DataFrame(config)
     else:
         df = config
     

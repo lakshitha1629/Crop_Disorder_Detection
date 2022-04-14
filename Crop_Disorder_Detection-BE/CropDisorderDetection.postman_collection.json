@@ -40,17 +40,15 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:5000/getPrediction",
-					"protocol": "http",
+					"raw": "https://crop-disorder-detection-be.herokuapp.com/getPredictionOutput",
+					"protocol": "https",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"crop-disorder-detection-be",
+						"herokuapp",
+						"com"
 					],
-					"port": "5000",
 					"path": [
-						"getPrediction"
+						"getPredictionOutput"
 					]
 				}
 			},
@@ -72,15 +70,13 @@
 					]
 				},
 				"url": {
-					"raw": "http://127.0.0.1:5000/getDetectionOutput",
-					"protocol": "http",
+					"raw": "https://crop-disorder-detection-be.herokuapp.com/getDetectionOutput",
+					"protocol": "https",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"crop-disorder-detection-be",
+						"herokuapp",
+						"com"
 					],
-					"port": "5000",
 					"path": [
 						"getDetectionOutput"
 					]

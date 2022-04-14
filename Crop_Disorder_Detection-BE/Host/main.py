@@ -1,7 +1,6 @@
-from flask import Flask, request, redirect, jsonify
-from flask_restful import Resource, Api, reqparse
+from flask import Flask, request, redirect
+from flask_restful import Resource, Api
 from flask_cors import CORS
-import json
 import os
 import prediction
 from imageProcessing import detectionOutput
@@ -66,10 +65,9 @@ class GetPredictionOutput(Resource):
         try:
             data = request.get_json()
             # print(data)
-            predictValue = prediction.predict_mpg(data)
-            # return {'predict':predict}
-            print(predictValue)
-            return {'predict': predictValue.tojson()}
+            predict = prediction.predict_mpg(data)
+            predictOutput = predict[0]
+            return {'predict':predictOutput}
 
         except Exception as error:
             return {'error': error}
@@ -78,10 +76,6 @@ api.add_resource(Test,'/')
 api.add_resource(GetDetectionOutput,'/getDetectionOutput')
 api.add_resource(GetPredictionOutput,'/getPredictionOutput')
 
-# if __name__ == "__main__":
-#     port = int(os.environ.get("PORT", 5000))
-#     app.run(host='0.0.0.0', port=port)
-
-
-if __name__ == '__main__':
-    app.run(debug=True)
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
