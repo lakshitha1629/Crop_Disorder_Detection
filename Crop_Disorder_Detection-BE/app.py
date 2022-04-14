@@ -2,7 +2,6 @@ from flask import Flask, request, redirect
 from flask_restful import Resource, Api
 from flask_cors import CORS
 import os
-import re
 import prediction
 from imageProcessing import detectionOutput
 
@@ -58,7 +57,7 @@ class GetDetectionOutput(Resource):
         except Exception as error:
             return {'error': error}
 
-class GetPrediction(Resource):
+class GetPredictionOutput(Resource):
     def get(self):
         return {"error":"Invalid Method."}
 
@@ -74,7 +73,7 @@ class GetPrediction(Resource):
 
 api.add_resource(Test,'/')
 api.add_resource(GetDetectionOutput,'/getDetectionOutput')
-api.add_resource(GetPrediction,'/getPrediction')
+api.add_resource(GetPredictionOutput,'/getPredictionOutput')
 
 if __name__ == '__main__':
     app.run(debug=True)

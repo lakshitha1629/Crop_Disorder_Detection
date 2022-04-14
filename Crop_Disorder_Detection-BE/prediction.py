@@ -8,8 +8,10 @@ def predict_mpg(config):
     with open(pkl_filename, 'rb') as f_in:
         model = pickle.load(f_in)
 
+
     if type(config) == dict:
-        df = pd.DataFrame(config)
+        df = pd.DataFrame.from_dict(config)
+
     else:
         df = config
     
